@@ -26,4 +26,8 @@ function playMisuc3 () {
  function playMisuc4 () {
     document.getElementById('bgMusic4').play();
  }
+ function playMisuc5 () {
+    if (!audio) return;
+    audio.play();
+ }
 

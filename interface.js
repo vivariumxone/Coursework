@@ -1,4 +1,4 @@
-upInterface()
+
 
 function upInterface() {
     hp.textContent = `ХП  ${Player.health}❤️`

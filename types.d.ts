@@ -8,6 +8,6 @@ export interface Player {
     damage: number,
     radiation: number,
     inventory: string[],
-    map?:string
+    map?: () => any
 
 }

@@ -95,7 +95,8 @@ function titl() {
     document.body.appendChild(divContainer);
 }
 
-async function startGameplay() { //диалог первый
+async function startGameplay() {//диалог первый
+    upInterface() 
     video.style.display = 'block'
     video.src = "music/бункер.mp4";
      video.muted = false
@@ -152,8 +153,11 @@ async function stopHouse () {
 }
 
 async function goHedgehog() {
-    videoRevers('вызовежа')
-    video.loop = false
+    await videoTimerRevers('вызовежа')
+    await videoTimerRevers('выброс')
+    videoRevers('заставка')
+    await creayDialog("Цель: спасти ежа. Теперь ты идешь один. За каждый бой уровень радиации будет расти — покупай антирадин (уколы), чтобы снижать её. Для восстановления здоровья используй аптечки. Повышай уровень, сражаясь с противниками, или качай характеристики в спортзале.")
+    videoRevers('ятебяспас')
     
 }
 
@@ -165,13 +169,15 @@ async function goHedgehog() {
     document.querySelector('.startGame').remove()
     // 1. Останавливаем видео
     
+
+    upInterface()
+    goHedgehog()
+//     // 2. Удаляем видео (как будто оно закончилось)
     
-    // 2. Удаляем видео (как будто оно закончилось)
-    
-   
-    // 3. Сразу запускаем то, что идет после видео
-    pvp1()
-    video.muted = false
+//    playMisuc5()
+//     // 3. Сразу запускаем то, что идет после видео
+//     checkMap()
+//     video.muted = false
      // твоя функция выбора персонажа
     
     // 4. Кнопка старта уже должна быть удалена, если нет:

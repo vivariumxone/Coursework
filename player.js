@@ -6,10 +6,10 @@ const Player = {
     lvl: 1,
     health: 100,
     maxHealth: 100,
-    damage: 5,
+    damage: 4,
     radiation: 0,
     inventory: [],
-    map:''
+    map:() => desert()
 }
 
 const Enemy = {
