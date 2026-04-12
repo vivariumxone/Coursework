@@ -1,13 +1,18 @@
-export interface Player {
-   
+export interface Enemy {
     name?: string,
-    many: number,
+    health: number,
+    maxHealth: number,
+    damage: number,
+}
+
+export interface Player {
+    name?: string,
+    maney: number,
     lvl: number,
     health: number,
     maxHealth: number,
     damage: number,
     radiation: number,
-    inventory: string[],
-    map?: () => any
-
+    inventory: InventoryItem[]
 }
+

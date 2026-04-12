@@ -2,6 +2,7 @@ function creayDialog (text) { //промис для диалогов
 return new Promise((resolve)=> {
 clearAllDialogs()
     const dialog = document.createElement('div')
+    dialog.className = 'game-dialog';
      dialog.style.position = 'absolute'
      dialog.style.top = '77%'
      
@@ -45,6 +46,7 @@ function choiceDialog2(text, btn1Text, btn2Text, callback1, callback2) {
     return new Promise((resolve) => {
         clearAllDialogs()
         const dialog = document.createElement('div');
+        dialog.className = 'game-dialog';
         dialog.style.position = 'absolute';
         dialog.style.top = '77%';
         dialog.style.background = 'rgba(110, 99, 99, 0.7)';
@@ -107,19 +109,15 @@ function choiceDialog2(text, btn1Text, btn2Text, callback1, callback2) {
     })
 }
 
-function clearAllDialogs() {// боже функция все держит
-    
-    const dialogs = document.querySelectorAll('div[style*="position: fixed"], div[style*="position: absolute"]');
-    dialogs.forEach(d => {
-        if (d.id !== 'enemyContainer') { 
-            d.remove();
-        }
-    });
+function clearAllDialogs() {
+    document.querySelectorAll('.game-dialog').forEach(d => d.remove());
 }
 function choiceDialog3(text, btn1Text, btn2Text, btn3Text, callback1, callback2, callback3) {
     return new Promise((resolve) => {
         clearAllDialogs()
         const dialog = document.createElement('div');
+        dialog.className = 'game-dialog';
+        dialog.id = 'choiceDialog';
         dialog.style.position = 'fixed';
         dialog.style.top = '77%';
         dialog.style.left = '50%'
@@ -202,7 +200,9 @@ function choiceDialog3(text, btn1Text, btn2Text, btn3Text, callback1, callback2,
 
 function choiceDialog5(text, btn1Text, btn2Text, btn3Text, btn4Text, btn5Text, callback1, callback2, callback3, callback4, callback5) {
     return new Promise((resolve) => {
+        clearAllDialogs()
         const dialog = document.createElement('div');
+        dialog.className = 'game-dialog';
         dialog.style.position = 'absolute';
         dialog.style.top = '50%';
         dialog.style.left = '50%';

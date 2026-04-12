@@ -9,13 +9,14 @@
 
 
 
-function pvp1 (vrag) {
-    audio.pause()
+async function pvp1 (vrag) {
+    mapVariable = 'pvp1'
+    playMisuc5 ()
     videoRevers('ежбой')
     playMisuc3()
     video.loop = true
-    video.style.display = 'block'
-    choiceDialog3('Что выберешь', 'Atak', 'blok + Atak', 'border', () => moveAtak(vrag), () => moveAtakBlok(vrag), ()=>moveHil(vrag))
+    
+    choiceDialog3('Что выберешь', 'Atak', 'blok + Atak', 'получить леща', () => moveAtak(vrag), () => moveAtakBlok(vrag), ()=>moveHil(vrag))
 enemy(vrag)
 
 }
@@ -30,6 +31,9 @@ function moveAtak(vrag) {
 //защита атака
 function moveAtakBlok(vrag) {
 const luck = Math.floor(Math.random() * 11)
+// Функция реализует механику рискованной атаки с использованием генератора псевдослучайных чисел. 
+// Вероятность исхода распределена на три сценария: критический успех (двойной урон врагу), 
+// частичный успех (сниженный урон врагу + получение урона игроком) и критический провал (четверной урон по игроку)
 
 if (luck > 7) {
 vrag.health -= Player.damage * 2
@@ -50,27 +54,32 @@ checkPvp(vrag)
 }
 
 function moveHil(vrag) {
-if(Player.health + 5 < Player.maxHealth) Player.health +=5;
+Player.health -= vrag.damage
 
 checkPvp(vrag)
 }
 
 function checkPvp(vrag) {
     upInterface() 
-    enemy(vrag)
+    
     if (Player.health <= 0) {
         return
     }
     if (vrag.health > 0) {
-        choiceDialog3('Что выберешь', 'Atak', 'blok + Atak', 'border', () => moveAtak(vrag), () => moveAtakBlok(vrag), ()=>moveHil(vrag))
+        enemy(vrag)
+        choiceDialog3('Что выберешь', 'Atak', 'blok + Atak', 'получить леща', () => moveAtak(vrag), () => moveAtakBlok(vrag), ()=>moveHil(vrag))
     } else {
-        console.log('win')
-        //победа
+        addToInventory('needle', 3)
+        vrag.health = vrag.maxHealth
+        clearAllDialogs()
+        hideEnemy()
+        desert()
     }
 }
 
 function enemy(vrag) {
     let enemyContainer = document.getElementById('enemyContainer');
+    
     
     if (!enemyContainer) {
         enemyContainer = document.createElement('div');
@@ -96,8 +105,24 @@ function enemy(vrag) {
         document.body.appendChild(enemyContainer);
     }
     
-    const percent = Math.max(0, Math.floor((vrag.health / vrag.maxHealth) * 100));
-document.getElementById('enemyHp').style.width = `${percent}%`;
+    
+    enemyContainer.style.display = 'block';
+    
+    
+    const enemyHp = document.getElementById('enemyHp');
+    if (enemyHp) {
+        const percent = Math.max(0, Math.floor((vrag.health / vrag.maxHealth) * 100));
+        enemyHp.style.width = `${percent}%`;
+    } else {
+        console.error('enemyHp элемент не найден!');
+    }
+}
+
+function hideEnemy() {
+    const enemyContainer = document.getElementById('enemyContainer');
+    if (enemyContainer) {
+        enemyContainer.style.display = 'none';
+    }
 }
 
 
