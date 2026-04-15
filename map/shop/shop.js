@@ -1,25 +1,23 @@
 async function chigur() {
-mapVariable = 'chigur'
-    playMisuc13 () 
-    await videoTimerRevers('чигурпришел')
-    videoRevers('выбор')
-    choiceDialog2('орел орешка?', 'орел', 'орешка', eagle)
+  mapVariable = 'chigur';
+  playMisuc13();
+  await videoTimerRevers('чигурпришел');
+  videoRevers('выбор');
+  choiceDialog2('орел орешка?', 'орел', 'орешка', eagle);
 }
 async function eagle() {
-    await videoTimerRevers('чигурорел')
-    shop()
-
+  await videoTimerRevers('чигурорел');
+  shop();
 }
 // покупка предметов
 function shopBuy() {
-    mapVariable = 'buy'
-    createShopUI()
+  mapVariable = 'buy';
+  createShopUI();
 }
 function createShopUI() {
-    
-    if (mapVariable !== 'buy') return;
-    const container = document.createElement('div');
-    container.innerHTML = `
+  if (mapVariable !== 'buy') return;
+  const container = document.createElement('div');
+  container.innerHTML = `
         <div class="shop-box">
             medkit 30<br>
             
@@ -30,42 +28,40 @@ function createShopUI() {
             </div>
         </div>
     `;
-document.body.appendChild(container);
-    
-        
-    
+  document.body.appendChild(container);
 }
 
 function buying() {
-    let utogBuy = 0
-    const nameInput = document.getElementById('namesItem').value;
-    const quantity = Math.floor(Number(document.getElementById('quantity').value));
-    console.log(quantity)
-        if (!items[nameInput] || quantity < 1 || typeof quantity !== 'number'|| Number.isNaN(quantity)) {
-        console.log('Нет такого предмета');
-        shop()
-        const container = document.querySelector('.shop-box').parentElement;
+  let utogBuy = 0;
+  const nameInput = document.getElementById('namesItem').value;
+  const quantity = Math.floor(
+    Number(document.getElementById('quantity').value)
+  );
+  console.log(quantity);
+  if (
+    !items[nameInput] ||
+    quantity < 1 ||
+    typeof quantity !== 'number' ||
+    Number.isNaN(quantity)
+  ) {
+    console.log('Нет такого предмета');
+    shop();
+    const container = document.querySelector('.shop-box').parentElement;
     container.remove();
-    return
-    } 
-    for(let i = 0; i < quantity; i++) {
-      utogBuy += items[nameInput].price
-    }
-    if (Player.maney >= utogBuy) {
-        Player.maney -= utogBuy
-        addToInventory(nameInput, quantity)
-        upInterface()
-        shop()
-        
-        
-    }else {
-        upInterface()
-        shop()
-    }
-           const container = document.querySelector('.shop-box').parentElement;
-    container.remove();
+    return;
+  }
+  for (let i = 0; i < quantity; i++) {
+    utogBuy += items[nameInput].price;
+  }
+  if (Player.maney >= utogBuy) {
+    Player.maney -= utogBuy;
+    addToInventory(nameInput, quantity);
+    upInterface();
+    shop();
+  } else {
+    upInterface();
+    shop();
+  }
+  const container = document.querySelector('.shop-box').parentElement;
+  container.remove();
 }
-
-
-
-
