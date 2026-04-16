@@ -1,11 +1,6 @@
-  
-   function startGame () {
-   deleteBgmSta()
-   onVideoEnd()
-   }
-   
-   function gemplay() {
-      
-   }
-   
-   
+function startGame() {
+  deleteBgmSta();
+  onVideoEnd();
+}
+
+function gemplay() {}
