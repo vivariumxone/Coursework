@@ -23,6 +23,7 @@ const Player = {
         {id: 'guitar', count: 1},
     ],
 }   
+
 // предметы игры
 const items = {
     'needle': {name: 'Иголка', price: 5},
@@ -31,3 +32,9 @@ const items = {
 
 }
 
+// диалоги игры
+const Dialog = {
+    dialoguesPlayed: {
+        darklane: false,
+    }
+}

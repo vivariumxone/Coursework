@@ -90,3 +90,12 @@ dd.play()
     dd.pause()
    }
  }
+function playMisuc14 () {
+   const dd = document.getElementById('bgMusic14')
+   if(mapVariable === 'darkcity') {
+    dd.loop = true
+dd.play()
+   } else {
+    dd.pause()
+   }
+ }

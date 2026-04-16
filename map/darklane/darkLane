@@ -1,0 +1,11 @@
+function dealDarkLane(){
+    if (Player.maney >= 50) {
+        Player.maney -= 50;
+        upInterface()
+        city(); // goodDealDarkLane Хорошая сделка
+} else {
+    fightDarkLane(); // Плохая сделка
+}
+}
+
+function fightDarkLane(){}
