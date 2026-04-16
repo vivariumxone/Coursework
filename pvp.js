@@ -5,10 +5,10 @@
 
 // })}
 
-async function pvp1(vrag) {
+async function pvp1(vrag, video) {
   mapVariable = 'pvp1';
   playMisuc5();
-  videoRevers('ежбой');
+  videoRevers(video);
   playMisuc3();
   video.loop = true;
 

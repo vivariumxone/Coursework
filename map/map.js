@@ -70,7 +70,7 @@ async function desert() {
     '395мурино',
     'd',
     'а',
-    () => pvp1(Enemy),
+    () => pvp1(Enemy, 'ежбой'),
     city,
     boss
   );
